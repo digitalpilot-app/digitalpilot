@@ -14,6 +14,7 @@
  * Domain Path: /languages
  * Contributors: iamjeylabrecque, valeriutihai
  */
+
 defined( 'ABSPATH' ) || die( 'Plugin file cannot be accessed directly.' );
 // No direct access.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -24,7 +25,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main Class - DigitalPilot
  *
- * @since 1.0.0
+ * @package     DigitalPilot
+ * @subpackage  DigitalPilot Traking
+ * @author      Valeriu Tihai
+ * @author URI  https://vt9.agency/
+ * @link        https://www.digitalpilot.app/
+ * @license     https://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later
+ * @version     1.0.0
+ * @since       1.0.0
  */
 class DigitalPilot {
 
@@ -192,6 +200,7 @@ class DigitalPilot {
 		if ( $digitalpilot_tag ) {
 			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . $digitalpilot_tag, array(), null, false );
 			wp_script_add_data( 'dp_tag', 'async', true );
+			wp_add_inline_script( 'dp_tag', 'document.getElementById("dp_tag-js").id = "dp_tag";' );
 		}
 	}
 
