@@ -1,18 +1,18 @@
 <?php
-/*
+/**
  * Plugin Name: DigitalPilot
  * Plugin URI: https://wordpress.org/plugins/digitalpilot/
  * Description: DigitalPilot
- * Text Domain: digitalpilot
- * Domain Path: /languages
  * Version: 1.0.0
  * Requires at least: 6.0
- * Requires PHP: 7.4
+ * Requires PHP: 7.0
  * Author: DigitalPilot
  * Author URI: https://digitalpilot.app/
- * Contributors: iamjeylabrecque, valeriutihai
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain: digitalpilot
+ * Domain Path: /languages
+ * Contributors: iamjeylabrecque, valeriutihai
  */
 defined( 'ABSPATH' ) || die( 'Plugin file cannot be accessed directly.' );
 // No direct access.
