@@ -12,7 +12,7 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: digitalpilot
  * Domain Path: /languages
- * Contributors: iamjeylabrecque, valeriutihai
+ * Contributors: digitalpilot, iamjeylabrecque, valeriutihai
  */
 
 defined( 'ABSPATH' ) || die( 'Plugin file cannot be accessed directly.' );

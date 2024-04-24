@@ -1,5 +1,5 @@
 === DigitalPilot ===
-Contributors: iamjeylabrecque, valeriutihai
+Contributors: digitalpilot, iamjeylabrecque, valeriutihai
 Tags: analytics, marketing, engagement, traffic, insights, integration, leads, marketing, optimization, roi, sales, traffic, visitors
 Requires at least: 5.8
 Tested up to: 6.5
