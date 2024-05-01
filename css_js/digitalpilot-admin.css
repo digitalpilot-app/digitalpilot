@@ -1,3 +1,19 @@
+.settings_page_digitalpilot-settings h2 {
+	margin-top: 2.5rem;
+}
 .settings_page_digitalpilot-settings .digitalpilot-description {
 	font-size: 14px;
+}
+
+.settings_page_digitalpilot-settings .postbox {
+	padding: 3rem;
+	width: calc(100% - 5rem); /* La început, lățimea este setată la 100% */
+	max-width: 70%; /* Dar are o lățime maximă de 70% */
+}
+
+@media (max-width: 1200px) {
+	.settings_page_digitalpilot-settings .postbox {
+		width: calc(100% - 5rem);
+		max-width: none; /* Eliminăm limitarea la lățime */
+	}
 }
