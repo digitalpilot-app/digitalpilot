@@ -92,7 +92,7 @@ class DigitalPilot {
 	 * @return array The modified array of plugin action links.
 	 */
 	public function digitalpilot_links( $links ) {
-		$links[] = '<a href="https://digitalpilot.app/" target="_blank">' . __( 'Get Tag', 'digitalpilot' ) . '</a>';
+		$links[] = '<a href="https://www.digitalpilot.app/login" target="_blank">' . __( 'Get Tag', 'digitalpilot' ) . '</a>';
 		$links[] = '<a href="https://wordpress.org/support/plugin/digitalpilot/" target="_blank">' . __( 'Support', 'digitalpilot' ) . '</a>';
 		return $links;
 	}
@@ -137,8 +137,15 @@ class DigitalPilot {
 			array(
 				'settings_type' => 'section',
 				'id'            => 'digitalpilot_section_settings_general',
-				'title'         => __( 'General Settings', 'digitalpilot' ),
+				'title'         => __( 'Getting Started', 'digitalpilot' ),
 				'callback'      => 'digitalpilot_description_section_callback',
+				'page'          => 'digitalpilot_page',
+			),
+			array(
+				'settings_type' => 'section',
+				'id'            => 'digitalpilot_section_settings_steps',
+				'title'         => __( 'Steps', 'digitalpilot' ),
+				'callback'      => 'digitalpilot_steps_section_callback',
 				'page'          => 'digitalpilot_page',
 			),
 			array(
@@ -147,7 +154,7 @@ class DigitalPilot {
 				'title'         => __( 'DigitalPilot tracking ID', 'digitalpilot' ),
 				'callback'      => 'digitalpilot_settings_field_render',
 				'page'          => 'digitalpilot_page',
-				'section'       => 'digitalpilot_section_settings_general',
+				'section'       => 'digitalpilot_section_settings_steps',
 				'args'          => array(
 					'id'          => 'digitalpilot_tag',
 					'type'        => 'text',
@@ -155,7 +162,7 @@ class DigitalPilot {
 					'name'        => 'digitalpilot_tag',
 					'value'       => 'digitalpilot_tag',
 					'label_for'   => '',
-					'description' => __( 'Add DigitalPilot tracking ID. Where can I find <a href="https://www.digitalpilot.app/" target="_blank">my tracking ID?</a>', 'digitalpilot' ),
+					'description' => __( 'Where can I <a href="https://www.digitalpilot.app/login/" target="_blank">find my tracking ID?</a>', 'digitalpilot' ),
 				),
 			),
 		);
@@ -248,6 +255,37 @@ class DigitalPilot {
 		echo '<p class="digitalpilot-description">' . esc_html( __( 'Stop marketing in the dark. Join hundreds of businesses who use DigitalPilot to illuminate website traffic and transform stranger danger into sales opportunities.', 'digitalpilot' ) ) . '</p>';
 	}
 
+
+	/**
+	 * Callback function for the steps section in the DigitalPilot settings page.
+	 *
+	 * This function serves as the callback for displaying a steps section on the DigitalPilot settings page.
+	 * It is used to provide additional information or instructions to users regarding a specific section of settings.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function digitalpilot_steps_section_callback() {
+		$list_items = array(
+			__( 'Create a DigitalPilot account at <a href="https://www.digitalpilot.app/signup" target="_blank">DigitalPilot.app</a>', 'digitalpilot' ),
+			__( 'Access your DigitalPilot settings by <a href="https://www.digitalpilot.app/login" target="_blank">logging in</a>.', 'digitalpilot' ),
+			__( 'Copy the DigitalPilot Tag ID provided and paste it into the settings below.', 'digitalpilot' ),
+		);
+		// Output the steps section content.
+		echo '<ol class="digitalpilot-list">';
+		foreach ( $list_items as $item ) {
+			echo '<li>' . wp_kses(
+				$item,
+				array(
+					'a' => array(
+						'href'   => array(),
+						'target' => array(),
+					),
+				)
+			) . '</li>';
+		}
+		echo '</ol>';
+	}
 
 
 	/**
@@ -394,6 +432,7 @@ class DigitalPilot {
 	public function digitalpilot_options_page() {
 		?>
 		<div class="wrap">
+		<div class="postbox">
 			<form action='options.php' method='post'>
 				<h1><?php esc_html_e( 'DigitalPilot Settings', 'digitalpilot' ); ?></h1>
 				<?php
@@ -405,6 +444,7 @@ class DigitalPilot {
 					submit_button();
 				?>
 			</form>
+		</div>
 		</div>
 		<?php
 	}
