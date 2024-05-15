@@ -2,7 +2,7 @@
 /**
  * Plugin Name: DigitalPilot
  * Plugin URI: https://wordpress.org/plugins/digitalpilot/
- * Description: DigitalPilot
+ * Description: Leverage visitor insights to engage better, personalize messaging, prioritize leads, inform sales calls, and get more from your marketing spend.
  * Version: 1.0.0
  * Requires at least: 6.0
  * Requires PHP: 7.0
