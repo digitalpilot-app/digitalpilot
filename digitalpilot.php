@@ -228,10 +228,10 @@ class DigitalPilot {
 		// Check if the current admin page is the DigitalPilot settings page.
 		if ( 'settings_page_digitalpilot-settings' === $hook ) {
 			// Enqueue the JavaScript file for the DigitalPilot admin functionality.
-			wp_enqueue_script( 'analyticstracker-js-admin', plugins_url( '/css_js/digitalpilot-admin.js', __FILE__ ), array( 'jquery' ), true, '1.0.0' );
+			wp_enqueue_script( 'analyticstracker-js-admin', plugins_url( '/assets/digitalpilot-admin.js', __FILE__ ), array( 'jquery' ), true, '1.0.0' );
 
 			// Register and enqueue the CSS file for styling the DigitalPilot admin page.
-			wp_register_style( 'digitalpilot-css-admin', plugins_url( '/css_js/digitalpilot-admin.css', __FILE__ ), array(), '1.0.0', 'all' );
+			wp_register_style( 'digitalpilot-css-admin', plugins_url( '/assets/digitalpilot-admin.css', __FILE__ ), array(), '1.0.0', 'all' );
 
 			wp_enqueue_style( 'digitalpilot-css-admin' );
 		}
