@@ -205,7 +205,7 @@ class DigitalPilot {
 
 		// If a tracking ID is found, enqueue the DigitalPilot tag script.
 		if ( $digitalpilot_tag ) {
-			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . $digitalpilot_tag, array(), null, false );
+			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . $digitalpilot_tag, array(), '1.0.0', false );
 			wp_script_add_data( 'dp_tag', 'async', true );
 			wp_add_inline_script( 'dp_tag', 'document.getElementById("dp_tag-js").id = "dp_tag";' );
 		}
@@ -400,6 +400,7 @@ class DigitalPilot {
 			$input_value = esc_attr( $atts['value'] );
 
 			// Render the input field.
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			printf( '<input type="%1$s" class="%2$s" id="%3$s" name="%4$s" value="%5$s"/>', $input_type, $input_class, $input_id, $input_name, $input_value );
 
 			// Render the description if provided.
@@ -414,6 +415,7 @@ class DigitalPilot {
 					)
 				);
 				// Description.
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				printf( '<p class="description">%1$s</p>', $description );
 			}
 		}
