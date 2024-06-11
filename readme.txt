@@ -1,10 +1,10 @@
 === DigitalPilot ===
 Contributors: digitalpilot, iamjeylabrecque, valeriutihai
 Tags: analytics, marketing, engagement, traffic, insights, integration, leads, marketing, optimization, roi, sales, traffic, visitors
-Requires at least: 5.8
+Requires at least: 6.2
 Tested up to: 6.5
-Stable tag: 1.0.0
-Requires PHP: 7.0
+Stable tag: 1.0.1
+Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,12 @@ Upload the DigitalPilot plugin to your blog, activate it, and then enter your tr
 
 
 == Changelog ==
+
+= 1.0.1 =
+*10 June 2024*
+
+* FIX: Prefix Class name
+* FIX: Escape variables and options
 
 = 1.0.0 =
 *Release Date - 1 May 2024*

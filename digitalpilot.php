@@ -3,9 +3,9 @@
  * Plugin Name: DigitalPilot
  * Plugin URI: https://wordpress.org/plugins/digitalpilot/
  * Description: Leverage visitor insights to engage better, personalize messaging, prioritize leads, inform sales calls, and get more from your marketing spend.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Requires at least: 6.0
- * Requires PHP: 7.0
+ * Requires PHP: 7.2
  * Author: DigitalPilot
  * Author URI: https://digitalpilot.app/
  * License: GPLv2 or later
@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Main Class - DigitalPilot
+ * Main Class - DIGITALPILOT_Admin
  *
  * @package     DigitalPilot
  * @subpackage  DigitalPilot Traking
@@ -31,10 +31,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @author URI  https://vt9.agency/
  * @link        https://www.digitalpilot.app/
  * @license     https://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later
- * @version     1.0.0
+ * @version     1.0.1
  * @since       1.0.0
  */
-class DigitalPilot {
+class DIGITALPILOT_Admin {
 
 
 	/**
@@ -205,7 +205,7 @@ class DigitalPilot {
 
 		// If a tracking ID is found, enqueue the DigitalPilot tag script.
 		if ( $digitalpilot_tag ) {
-			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . $digitalpilot_tag, array(), '1.0.0', false );
+			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . esc_js( $digitalpilot_tag ), array(), '1.0.0', false );
 			wp_script_add_data( 'dp_tag', 'async', true );
 			wp_add_inline_script( 'dp_tag', 'document.getElementById("dp_tag-js").id = "dp_tag";' );
 		}
@@ -452,4 +452,4 @@ class DigitalPilot {
 	}
 }
 // Instantiate the main class.
-new DigitalPilot();
+new DIGITALPILOT_Admin();
