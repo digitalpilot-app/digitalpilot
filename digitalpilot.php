@@ -21,6 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'DIGITALPILOT_VERSION', '1.0.1' );
 
 /**
  * Main Class - DIGITALPILOT_Admin
@@ -205,7 +206,7 @@ class DIGITALPILOT_Admin {
 
 		// If a tracking ID is found, enqueue the DigitalPilot tag script.
 		if ( $digitalpilot_tag ) {
-			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . esc_js( $digitalpilot_tag ), array(), '1.0.0', false );
+			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . esc_js( $digitalpilot_tag ), array(), DIGITALPILOT_VERSION, false );
 			wp_script_add_data( 'dp_tag', 'async', true );
 			wp_add_inline_script( 'dp_tag', 'document.getElementById("dp_tag-js").id = "dp_tag";' );
 		}
@@ -228,10 +229,10 @@ class DIGITALPILOT_Admin {
 		// Check if the current admin page is the DigitalPilot settings page.
 		if ( 'settings_page_digitalpilot-settings' === $hook ) {
 			// Enqueue the JavaScript file for the DigitalPilot admin functionality.
-			wp_enqueue_script( 'analyticstracker-js-admin', plugins_url( '/assets/digitalpilot-admin.js', __FILE__ ), array( 'jquery' ), true, '1.0.0' );
+			wp_enqueue_script( 'digitalpilot-js-admin', plugins_url( '/assets/digitalpilot-admin.js', __FILE__ ), array( 'jquery' ), true, DIGITALPILOT_VERSION );
 
 			// Register and enqueue the CSS file for styling the DigitalPilot admin page.
-			wp_register_style( 'digitalpilot-css-admin', plugins_url( '/assets/digitalpilot-admin.css', __FILE__ ), array(), '1.0.0', 'all' );
+			wp_register_style( 'digitalpilot-css-admin', plugins_url( '/assets/digitalpilot-admin.css', __FILE__ ), array(), DIGITALPILOT_VERSION, 'all' );
 
 			wp_enqueue_style( 'digitalpilot-css-admin' );
 		}
@@ -393,30 +394,24 @@ class DIGITALPILOT_Admin {
 
 		// Render input type Text.
 		if ( 'text' === $atts['type'] ) {
-			$input_type  = esc_attr( $atts['type'] );
-			$input_class = esc_attr( $atts['class'] );
-			$input_id    = esc_attr( $atts['id'] );
-			$input_name  = esc_attr( $atts['name'] );
-			$input_value = esc_attr( $atts['value'] );
-
 			// Render the input field.
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			printf( '<input type="%1$s" class="%2$s" id="%3$s" name="%4$s" value="%5$s"/>', $input_type, $input_class, $input_id, $input_name, $input_value );
+			printf( '<input type="%1$s" class="%2$s" id="%3$s" name="%4$s" value="%5$s"/>', esc_attr( $atts['type'] ), esc_attr( $atts['class'] ), esc_attr( $atts['id'] ), esc_attr( $atts['name'] ), esc_attr( $atts['value'] ) );
 
 			// Render the description if provided.
 			if ( $atts['description'] ) {
-				$description = wp_kses(
-					$atts['description'],
-					array(
-						'a' => array(
-							'href'   => array(),
-							'target' => array(),
-						),
+				// Description.
+				printf(
+					'<p class="description">%1$s</p>',
+					wp_kses(
+						$atts['description'],
+						array(
+							'a' => array(
+								'href'   => array(),
+								'target' => array(),
+							),
+						)
 					)
 				);
-				// Description.
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				printf( '<p class="description">%1$s</p>', $description );
 			}
 		}
 	}
