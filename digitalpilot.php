@@ -3,7 +3,7 @@
  * Plugin Name: DigitalPilot
  * Plugin URI: https://wordpress.org/plugins/digitalpilot/
  * Description: Leverage visitor insights to engage better, personalize messaging, prioritize leads, inform sales calls, and get more from your marketing spend.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 6.0
  * Requires PHP: 7.2
  * Author: DigitalPilot
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DIGITALPILOT_VERSION', '1.0.1' );
+define( 'DIGITALPILOT_VERSION', '1.0.2' );
 
 /**
  * Main Class - DIGITALPILOT_Admin
@@ -93,8 +93,8 @@ class DIGITALPILOT_Admin {
 	 * @return array The modified array of plugin action links.
 	 */
 	public function digitalpilot_links( $links ) {
-		$links[] = '<a href="https://www.digitalpilot.app/login" target="_blank">' . __( 'Get Tag', 'digitalpilot' ) . '</a>';
-		$links[] = '<a href="https://wordpress.org/support/plugin/digitalpilot/" target="_blank">' . __( 'Support', 'digitalpilot' ) . '</a>';
+		$links[] = '<a href="https://www.digitalpilot.app/login" target="_blank" rel="noopener noreferrer">' . __( 'Get Tag', 'digitalpilot' ) . '</a>';
+		$links[] = '<a href="https://wordpress.org/support/plugin/digitalpilot/" target="_blank" rel="noopener noreferrer">' . __( 'Support', 'digitalpilot' ) . '</a>';
 		return $links;
 	}
 
@@ -206,7 +206,8 @@ class DIGITALPILOT_Admin {
 
 		// If a tracking ID is found, enqueue the DigitalPilot tag script.
 		if ( $digitalpilot_tag ) {
-			wp_enqueue_script( 'dp_tag', 'https://api.digitalpilot.app/tag.js?id=' . esc_js( $digitalpilot_tag ), array(), DIGITALPILOT_VERSION, false );
+			$tag_script_url = 'https://api.digitalpilot.app/tag.js?id=' . rawurlencode( $digitalpilot_tag );
+			wp_enqueue_script( 'dp_tag', esc_url_raw( $tag_script_url ), array(), DIGITALPILOT_VERSION, false );
 			wp_script_add_data( 'dp_tag', 'async', true );
 			wp_add_inline_script( 'dp_tag', 'document.getElementById("dp_tag-js").id = "dp_tag";' );
 		}
@@ -268,8 +269,8 @@ class DIGITALPILOT_Admin {
 	 */
 	public function digitalpilot_steps_section_callback() {
 		$list_items = array(
-			__( 'Create a DigitalPilot account at <a href="https://www.digitalpilot.app/signup" target="_blank">DigitalPilot.app</a>', 'digitalpilot' ),
-			__( 'Access your DigitalPilot settings by <a href="https://www.digitalpilot.app/login" target="_blank">logging in</a>.', 'digitalpilot' ),
+			__( 'Create a DigitalPilot account at <a href="https://www.digitalpilot.app/signup" target="_blank" rel="noopener noreferrer">DigitalPilot.app</a>', 'digitalpilot' ),
+			__( 'Access your DigitalPilot settings by <a href="https://www.digitalpilot.app/login" target="_blank" rel="noopener noreferrer">logging in</a>.', 'digitalpilot' ),
 			__( 'Copy the DigitalPilot Tag ID provided and paste it into the settings below.', 'digitalpilot' ),
 		);
 		// Output the steps section content.
@@ -281,6 +282,7 @@ class DIGITALPILOT_Admin {
 					'a' => array(
 						'href'   => array(),
 						'target' => array(),
+						'rel'    => array(),
 					),
 				)
 			) . '</li>';

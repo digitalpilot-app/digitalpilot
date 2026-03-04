@@ -12,14 +12,24 @@
  * @since       1.0.0
  */
 
-// If uninstall not called form WordPress, exit.
+// If uninstall not called from WordPress, exit.
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
 // Delete the options from the {wp_prefix}_options table.
 if ( is_multisite() ) {
-	delete_site_option( 'digitalpilot_settings' );
+	$site_ids = get_sites(
+		array(
+			'fields' => 'ids',
+		)
+	);
+
+	foreach ( $site_ids as $site_id ) {
+		switch_to_blog( $site_id );
+		delete_option( 'digitalpilot_settings' );
+		restore_current_blog();
+	}
 } else {
 	delete_option( 'digitalpilot_settings' );
 }

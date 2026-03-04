@@ -1,0 +1,25 @@
+name: Deploy to WordPress.org
+
+on:
+    push:
+        tags:
+            - '*'
+    workflow_dispatch:
+
+jobs:
+    deploy:
+        name: Deploy plugin to WordPress.org SVN
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Deploy
+              uses: 10up/action-wordpress-plugin-deploy@stable
+              env:
+                  SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+                  SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+                  SLUG: digitalpilot

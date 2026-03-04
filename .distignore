@@ -1,3 +1,21 @@
+# VCS / CI
+.git/
+.github/
+
+# Local tooling
+.codex/
+.claude/
+
+# WordPress.org assets (handled separately by deploy action)
+.wordpress-org/
+
+# Legacy assets directory (kept out of release zip if recreated)
+assets/
+
+# OS/editor noise
+.DS_Store
+**/.DS_Store
+
 .git
 .distignore
 .gitignore

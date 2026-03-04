@@ -2,8 +2,8 @@
 Contributors: digitalpilot, iamjeylabrecque, valeriutihai
 Tags: analytics, marketing, engagement, traffic, insights, integration, leads, marketing, optimization, roi, sales, traffic, visitors
 Requires at least: 6.2
-Tested up to: 6.5
-Stable tag: 1.0.1
+Tested up to: 6.9.1
+Stable tag: 1.0.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -71,6 +71,14 @@ Upload the DigitalPilot plugin to your blog, activate it, and then enter your tr
 
 
 == Changelog ==
+
+= 1.0.2 =
+*4 March 2026*
+
+* FIX: Improved uninstall cleanup for multisite by removing plugin options per site.
+* SECURITY: Added `rel="noopener noreferrer"` to external admin links opened in new tabs.
+* SECURITY: Hardened external tag script URL building with proper URL encoding and escaping.
+* DEV: Updated WordPress compatibility metadata (`Tested up to: 6.9.1`).
 
 = 1.0.1 =
 *10 June 2024*
