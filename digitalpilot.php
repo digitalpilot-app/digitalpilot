@@ -3,7 +3,7 @@
  * Plugin Name: DigitalPilot
  * Plugin URI: https://wordpress.org/plugins/digitalpilot/
  * Description: Leverage visitor insights to engage better, personalize messaging, prioritize leads, inform sales calls, and get more from your marketing spend.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 6.0
  * Requires PHP: 7.2
  * Author: DigitalPilot
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'DIGITALPILOT_VERSION', '1.0.2' );
+define( 'DIGITALPILOT_VERSION', '1.0.3' );
 
 /**
  * Main Class - DIGITALPILOT_Admin
@@ -32,7 +32,7 @@ define( 'DIGITALPILOT_VERSION', '1.0.2' );
  * @author URI  https://vt9.agency/
  * @link        https://www.digitalpilot.app/
  * @license     https://www.gnu.org/licenses/gpl-2.0.html GPLv2 or later
- * @version     1.0.1
+ * @version     1.0.3
  * @since       1.0.0
  */
 class DIGITALPILOT_Admin {
