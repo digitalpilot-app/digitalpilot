@@ -1,0 +1,25 @@
+{
+	"$schema": "https://playground.wordpress.net/blueprint-schema.json",
+	"landingPage": "/wp-admin/options-general.php?page=digitalpilot-settings",
+	"login": true,
+	"preferredVersions": {
+		"php": "8.3",
+		"wp": "latest"
+	},
+	"steps": [
+		{
+			"step": "installPlugin",
+			"pluginData": {
+				"resource": "wordpress.org/plugins",
+				"slug": "digitalpilot"
+			}
+		},
+		{
+			"step": "setSiteOptions",
+			"options": {
+				"blogname": "DigitalPilot Demo",
+				"blogdescription": "A demo WordPress site configured to showcase the DigitalPilot plugin."
+			}
+		}
+	]
+}

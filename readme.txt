@@ -73,9 +73,10 @@ Upload the DigitalPilot plugin to your blog, activate it, and then enter your tr
 == Changelog ==
 
 = 1.0.3 =
-*17 March 2026*
+*10 April 2026*
 
 * META: Reduced plugin readme tags to a concise WordPress.org-friendly set.
+* DEV: Added a WordPress.org Playground blueprint for easier plugin preview and review setup.
 
 = 1.0.2 =
 *4 March 2026*
